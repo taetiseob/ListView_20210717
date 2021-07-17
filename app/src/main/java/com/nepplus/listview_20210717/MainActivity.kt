@@ -1,9 +1,11 @@
 package com.nepplus.listview_20210717
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.nepplus.listview_20210717.adapter.StudentAdapter
 import com.nepplus.listview_20210717.datas.Student
 import kotlinx.android.synthetic.main.activity_main.*
@@ -52,12 +54,23 @@ class MainActivity : AppCompatActivity() {
 //            길게 눌린 학생이름  로그로 출력
             val clickStudent = mStudentList[position]
             Log.d("길게눌린학생",clickStudent.name)
-
-//            길게 눌린 학생을 목록에서 제거하자.
-            mStudentList.remove(clickStudent)
+//             경고창을 띄우고 -> 확인을 눌렀을때만 학생 삭제.
+            val alert = AlertDialog.Builder(this)
+            alert.setTitle("학생삭제확인")
+            alert.setMessage("정말 ${clickStudent.name}을 삭제하시겟습니까?")
+            alert.setPositiveButton("확인", DialogInterface.OnClickListener { dialog, which ->
+//                확인 눌리면 할 일
+                //            길게 눌린 학생을 목록에서 제거하자.
+                mStudentList.remove(clickStudent)
 
 //            원본 목록 내용변화 -> 어댑터변수에게도 알려줘야함
-            mAdapter.notifyDataSetChanged()
+                mAdapter.notifyDataSetChanged()
+            })
+            alert.setNegativeButton("취소",null)
+
+//            반드시 화면에 등장시키는 함수를 실행시키자
+            alert.show()
+
             return@setOnItemLongClickListener true
         }
     }
