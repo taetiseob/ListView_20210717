@@ -2,6 +2,7 @@ package com.nepplus.listview_20210717
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.nepplus.listview_20210717.adapter.StudentAdapter
 import com.nepplus.listview_20210717.datas.Student
 import kotlinx.android.synthetic.main.activity_main.*
@@ -36,6 +37,15 @@ class MainActivity : AppCompatActivity() {
 
         //만들어진 mAdapter를 리스트의 어댑터로써 연결
         studentListView.adapter = mAdapter
+        //리스트뷰 이벤트 처리
 
+        studentListView.setOnItemClickListener { parent, view, position, id ->
+
+//            클릭된 학생의 이름을 토스트로 찍어보자.
+//            클릭된 학생이 누구냐?
+            val clickStudent = mStudentList[position]
+            Toast.makeText(this, "${clickStudent.name} 클릭됨", Toast.LENGTH_SHORT).show()
+
+        }
     }
 }
