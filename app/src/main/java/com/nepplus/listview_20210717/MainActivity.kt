@@ -52,6 +52,12 @@ class MainActivity : AppCompatActivity() {
 //            길게 눌린 학생이름  로그로 출력
             val clickStudent = mStudentList[position]
             Log.d("길게눌린학생",clickStudent.name)
+
+//            길게 눌린 학생을 목록에서 제거하자.
+            mStudentList.remove(clickStudent)
+
+//            원본 목록 내용변화 -> 어댑터변수에게도 알려줘야함
+            mAdapter.notifyDataSetChanged()
             return@setOnItemLongClickListener true
         }
     }
