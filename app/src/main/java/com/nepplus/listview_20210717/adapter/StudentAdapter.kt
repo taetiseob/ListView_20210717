@@ -21,6 +21,7 @@ class StudentAdapter(
 
         val mInflater = LayoutInflater.from(mContext)
     //부모가 준 getView 메서드를 갈아 엎었다 override
+    // ? => null인지 아닌지 고민해서 사용해야함
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
         //1.  convertView에 내용물이 없는 상태라면 ( null 상태 ) => 내용물을 채워주자.
