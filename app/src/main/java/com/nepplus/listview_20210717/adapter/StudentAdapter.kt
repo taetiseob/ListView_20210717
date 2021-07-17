@@ -20,7 +20,7 @@ class StudentAdapter(
         //xml파일을 코틀린으로 가져와주는 도구(LayoutInflater)가 우선 필요함.
 
         val mInflater = LayoutInflater.from(mContext)
-
+    //부모가 준 getView 메서드를 갈아 엎었다 override
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
         //1.  convertView에 내용물이 없는 상태라면 ( null 상태 ) => 내용물을 채워주자.
